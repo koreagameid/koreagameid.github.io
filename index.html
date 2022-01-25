@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> Kim in ho의 HTML,JS 연습 사이트</title>
+    <meta name="keywords" content=" ">
+    <meta name="description" content=" ">
+    <style>
+
+      @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+     
+      *{color:#02343F; font-family: 'Gowun Batang', serif;  background-color:#F0EDCC; text-align: center;}
+      /* 웹 페이지 내의 모든 글자의 글꼴을 웹폰트 ( 구글폰트 ) 로 바꾸고 , 배경색과 contents box의 색 대비를 준다. */
+
+       h1{color:green;}
+       h2{color:#422057;}
+
+      .maintitle{ background-color: #141A46; color: #EC8B5E; padding-bottom: 8px; border-bottom: 4px solid steelblue; }
+
+    </style>
+  </head>
+  <body>
+    <h1 class="maintitle">김인호의 WEB</h1>
+    - 웹사이트 생성일 : 2021-12-21
+  <p>이 웹사이트는 김인호가 HTML구조와 JS의 문법을 공부하고<br>
+     구현해보기 위해 만든 웹사이트 입니다.</p>
+     <h2>김인호의 공부계획</h2>
+     <p>1. 자바스크립트와 HTML의 구조를 배운다.<br>
+       2.웹사이트를 네이버나 다음처럼 포털사이트 비슷하게 꾸민다<br>
+       3.프론트엔드와 백엔드를 다룰수있는 언어 (ex.자바)를 배운다.<br>
+       4.웹서버에 대해 더 공부한뒤 제대로된 사이트를 구축한다. <br>
+       5.보안에 취약하지 않도록 우주방어 <br>
+       6.사람들이 이용할 수 있는 서비스 런칭</p>
+
+       <img src="img/ghostsong.jpg" width="400" alt="유령송"> <br>
+    <audio src="song/ghostsong12345.mp3" alt="유령송 1,2,3,4,5 버전 통합" controls="controls" autoplay></audio>
+    <!--익스플로러 엣지를 제외한 대부분의 웹 브라우저에서는 소리가 포함된 영상,오디오의 자동재생을 금하고 있음
+   그래서 audio에 autoplay와 loop를 넣어도 자동재생이 되지 않음,,, 자동재생 되게 할 방법을 찾을 것-->
+
+  <div>
+
+<!--자바스크립트와 분리해 놓기 위해 div태그 사이에는 html 문법으로만 구성된 코드임.-->
+
+  <strong> 링크 : <a href="http://kih.kro.kr/"> 케이아이에이치.케이알오.케이알 </a> </strong>
+  <!--<img src="img/logo.jpg" width="320" height="320" alt="로고">-->
+<br><br><br>
+  <table style="margin-left:auto; margin-right:auto;">
+
+  
+    <caption>김인호의 웹사이트 이용료</caption>
+    <colgroup>
+      <col style="background-color : lightblue">
+      <col span="4" style="background-color: lightgoldenrodyellow;"
+    </colgroup>
+
+    <tr>
+      <th> </th>
+      <th>종류</th>
+      <th>가격</th>
+  </tr>
+  <tr>
+      <td>1</td>
+      <td>방문</td>
+      <td>무료</td>
+  </tr>
+    <td>2</td>
+    <td>회원가입</td>
+    <td>500원 ※ 현재 수수료 없이 무료 신청 가능 </td>
+  <tr>
+    <td>3</td>
+    <td>오디오 다운로드</td>
+    <td>700원</td>
+  </tr>
+
+  <tr>
+    <td>4</td>
+    <td>비디오 다운로드</td>
+    <td>900원</td>
+  </tr>
+
+  </table>
+
+ <h3>문의 : rladlsgh7777@gmail.com</h3>
+
+
+
+
+
+  </div>
+
+  <script type = "text/javascript">
+var count = 2;
+
+function validate() {
+  var un = document.myform.username.value;
+  var pw = document.myform.pword.value;
+  var valid = false;
+
+  var unArray = ["kiminho", "admin", "id", "guest"];
+  var pwArray = ["kiminho", "admin", "Password", "guest"];
+
+  for (var i=0; i <unArray.length; i++) {
+      if ((un == unArray[i]) && (pw == pwArray[i])) {
+      valid = true;
+          break;
+      }
+  }
+
+  if (valid) {
+      alert ("성공적으로 로그인 되었습니다.");
+      window.location = "http://kih.kro.kr/";
+      return false;
+  }
+
+  var t = " ";
+
+  if (count == 1) {t = " "}
+
+  if (count >= 1) {
+      alert ("잘못된 USERNAME과 잘못된 PASSWORD이니 돌아가시오 " +
+             "너는 " + count + t + " 번의 기회가 남아있다.");
+      document.myform.username.value = "";
+      document.myform.pword.value = "";
+      setTimeout("document.myform.username.focus()", 25);
+      setTimeout("document.myform.username.select()", 25);
+      count --;
+  }
+
+  else {
+      alert ("이제 더이상의 기회는 없다.");
+      document.myform.username.value = "수고^^ 입력못함 ^^";
+      document.myform.pword.value = "";
+      document.myform.username.disabled = true;
+      document.myform.pword.disabled = true;
+      return false;
+  }
+
+}
+
+</script>
+
+<form name = "myform">
+<p>
+  ENTER USER NAME <input type="text" name="username">
+  ENTER PASSWORD <input type="password" name="pword">
+  <input type="button" value="Check In" name="Submit" onclick="validate()">
+</p>
+</form>
+  </body>
+</html>
